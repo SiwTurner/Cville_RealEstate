@@ -12,13 +12,12 @@ library(RCurl)
 
 #Load Data####
 #GeoJson
-setwd("~/13 Data Science Training/Real_Estate_2")
 cvilleGeo <- geojson_read("Parcel_Boundary_Area.geojson", method = "local", what = "sp")
 cville <- cvilleGeo
 
 #load prices for assessments
 data1 <- read.csv("Real_Estate_Current_Assessments.csv") %>% as_tibble()
-data1 <- mutate(data1, PIN = ï..ParcelNumber)
+data1 <- mutate(data1, PIN = Ã¯..ParcelNumber)
 data1 <- select(data1, PIN, CurrentAssessedValue, FullAddress)
 data1 <- inner_join(cvilleGeo@data, data1)
 data1 <- select(data1, PIN, CurrentAssessedValue, FullAddress)
